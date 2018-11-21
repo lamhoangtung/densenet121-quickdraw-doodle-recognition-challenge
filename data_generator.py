@@ -71,25 +71,3 @@ def df_to_image_array_xd(df, size, lw=6, time_color=True):
     return x
 
 
-valid_df = pd.read_csv(os.path.join(
-    DP_DIR, 'train_k{}.csv.gz'.format(NCSVS - 1)), nrows=34000)
-x_valid = df_to_image_array_xd(valid_df, size)
-y_valid = keras.utils.to_categorical(valid_df.y, num_classes=NCATS)
-print(x_valid.shape, y_valid.shape)
-print('Validation array memory {:.2f} GB'.format(x_valid.nbytes / 1024.**3))
-
-train_datagen = image_generator_xd(
-    size=size, batchsize=batchsize, ks=range(NCSVS - 1))
-
-x, y = next(train_datagen)
-n = 8
-fig, axs = plt.subplots(nrows=n, ncols=n, sharex=True,
-                        sharey=True, figsize=(12, 12))
-for i in range(n**2):
-    ax = axs[i // n, i % n]
-    (-x[i]+1)/2
-    ax.imshow((-x[i, :, :, 0] + 1)/2, cmap=plt.cm.gray)
-    ax.axis('off')
-plt.tight_layout()
-fig.savefig('gs.png', dpi=300)
-plt.show()
