@@ -15,8 +15,8 @@ from main import batchsize, size
 plt.rcParams['figure.figsize'] = [16, 10]
 plt.rcParams['font.size'] = 14
 
-DP_DIR = '../input/shuffle-csvs/'
-INPUT_DIR = '../input/quickdraw-doodle-recognition/'
+DP_DIR = '/mnt/raid1/kaggle/shuffle-csvs/'
+INPUT_DIR = '/mnt/raid1/kaggle/'
 
 BASE_SIZE = 256
 NCSVS = 100

@@ -41,7 +41,7 @@ def top_3_accuracy(y_true, y_pred):
 
 STEPS = 800
 EPOCHS = 16
-size = 128
+size = 139
 batchsize = 680
 NCATS = 340
 
