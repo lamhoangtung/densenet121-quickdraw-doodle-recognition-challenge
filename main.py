@@ -49,4 +49,5 @@ model = InceptionV3(include_top=True, weights=None,
                     input_shape=(size, size, 1), classes=NCATS)
 model.compile(optimizer=Adam(lr=0.002), loss='categorical_crossentropy', metrics=[
               categorical_crossentropy, categorical_accuracy, top_3_accuracy])
+
 print(model.summary())
