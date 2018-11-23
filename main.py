@@ -159,7 +159,7 @@ weightpath = "./model/weights-{epoch:02d}-{val_acc:.2f}.hdf5"
 checkpoint = ModelCheckpoint(weightpath, monitor='val_loss', verbose=0,save_best_only=False, save_weights_only=False, mode='auto', period=1)
 
 
-hist = model.fit_generator(
+model.fit_generator(
     train_datagen, steps_per_epoch=STEPS, epochs=EPOCHS, verbose=1,
     validation_data=(x_valid, y_valid),
     callback=[tensorboard, checkpoint]
