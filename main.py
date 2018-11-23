@@ -162,7 +162,7 @@ checkpoint = ModelCheckpoint(weightpath, monitor='val_loss', verbose=0,save_best
 model.fit_generator(
     train_datagen, steps_per_epoch=STEPS, epochs=EPOCHS, verbose=1,
     validation_data=(x_valid, y_valid),
-    callback=[tensorboard, checkpoint]
+    callbacks=[tensorboard, checkpoint]
 )
 
 
