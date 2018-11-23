@@ -1,5 +1,6 @@
 import ast
 import os
+import matplotlib.pyplot as plt
 
 import cv2
 import numpy as np
@@ -34,7 +35,7 @@ def image_generator(batch_size, ks):
                 x = np.zeros((len(df), IMAGE_SIZE, IMAGE_SIZE, 1))
                 for i, raw_strokes in enumerate(df.drawing.values):
                     x[i, :, :, 0] = draw_image(raw_strokes)
-                x = preprocess_input(x).astype(np.float32)
+                # x = preprocess_input(x).astype(np.float32)
                 y = keras.utils.to_categorical(
                     df.y, num_classes=NUMBERS_OF_CLASSES)
                 yield x, y
@@ -45,7 +46,7 @@ def df_to_image_array(df):
     x = np.zeros((len(df), IMAGE_SIZE, IMAGE_SIZE, 1))
     for i, raw_strokes in enumerate(df.drawing.values):
         x[i, :, :, 0] = draw_image(raw_strokes)
-    x = preprocess_input(x).astype(np.float32)
+    # x = preprocess_input(x).astype(np.float32)
     return x
 
 
@@ -56,3 +57,16 @@ y_valid = keras.utils.to_categorical(
     valid_df.y, num_classes=NUMBERS_OF_CLASSES)
 print(x_valid.shape, y_valid.shape)
 print('Validation array memory {:.2f} GB'.format(x_valid.nbytes / 1024.**3))
+
+train_datagen = image_generator(batch_size=100, ks=range(99))
+
+x, y = next(train_datagen)
+n = 8
+fig, axs = plt.subplots(nrows=n, ncols=n, sharex=True, sharey=True, figsize=(12, 12))
+for i in range(n**2):
+    ax = axs[i // n, i % n]
+    (-x[i]+1)/2
+    ax.imshow((-x[i, :, :, 0] + 1)/2, cmap=plt.cm.gray)
+    ax.axis('off')
+plt.tight_layout()
+fig.savefig('gs.png', dpi=300)

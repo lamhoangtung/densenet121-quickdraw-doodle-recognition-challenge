@@ -33,7 +33,7 @@ categories = s.list_all_categories()
 print(len(categories))
 340
 for y, cat in tqdm(enumerate(categories)):
-    df = s.read_training_csv(cat, nrows=30000)
+    df = s.read_training_csv(cat, nrows=100000)
     df['y'] = y
     df['cv'] = (df.key_id // 10 ** 7) % NCSVS
     for k in range(NCSVS):
