@@ -18,8 +18,8 @@ from keras.layers import Dense, GlobalAveragePooling2D
 from keras.metrics import (categorical_accuracy, categorical_crossentropy,
                            top_k_categorical_accuracy)
 from keras.models import Model
-from keras.optimizers import Adam, ModelCheckpoint
-from keras.callbacks import TensorBoard
+from keras.optimizers import Adam
+from keras.callbacks import TensorBoard, ModelCheckpoint
 
 start = dt.datetime.now()
 
