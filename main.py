@@ -155,8 +155,8 @@ plt.tight_layout()
 fig.savefig('gs.png', dpi=300)
 
 tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()), batch_size=batchsize, write_images=True, update_freq=(STEPS/10)*batchsize)
-weightpath = "./model/weights-{epoch:02d}-{val_acc:.2f}.hdf5"
-checkpoint = ModelCheckpoint(weightpath, monitor='val_acc', verbose=0,save_best_only=False, save_weights_only=False, mode='auto', period=1)
+weightpath = "./model/weights-{epoch:02d}-{top_3_accuracy:.2f}.hdf5"
+checkpoint = ModelCheckpoint(weightpath, monitor='val_loss', verbose=0,save_best_only=False, save_weights_only=False, mode='auto', period=1)
 
 
 model.fit_generator(
