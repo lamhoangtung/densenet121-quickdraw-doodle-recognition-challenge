@@ -78,7 +78,8 @@ def top_3_accuracy(y_true, y_pred):
 batchsize = 330
 size = 64
 STEPS = 10000
-EPOCHS = trunc(30060000/(batchsize*STEPS))
+EPOCHS = 27
+# EPOCHS = trunc(30060000/(batchsize*STEPS))
 # STEPS = trunc((34000000/EPOCHS)/batchsize)
 
 base_model = DenseNet121(include_top=False, weights='imagenet',
