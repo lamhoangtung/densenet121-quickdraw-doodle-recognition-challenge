@@ -17,7 +17,7 @@ from keras.callbacks import ReduceLROnPlateau
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras.metrics import (categorical_accuracy, categorical_crossentropy,
                            top_k_categorical_accuracy)
-from keras.models import Model
+from keras.models import Model, load_model
 from keras.optimizers import Adam
 from keras.callbacks import TensorBoard, ModelCheckpoint
 
@@ -90,6 +90,12 @@ predictions = Dense(NCATS, activation='softmax')(x)
 model = Model(inputs=base_model.input, outputs=predictions)
 model.compile(optimizer=Adam(lr=1e-4, decay=1e-9), loss='categorical_crossentropy', metrics=[
               categorical_crossentropy, categorical_accuracy, top_3_accuracy])
+
+
+# Load previous model
+model = load_model('../model/weights-009-0.925.hdf5')
+
+
 print(model.summary())
 
 
