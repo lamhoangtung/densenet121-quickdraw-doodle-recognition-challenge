@@ -1,6 +1,9 @@
+# Force to run on CPU
+import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
 import ast
 import datetime as dt
-import os
 import time
 
 import cv2
@@ -21,9 +24,6 @@ from keras.optimizers import Adam
 from keras.callbacks import TensorBoard, ModelCheckpoint
 from main import top_3_accuracy, INPUT_DIR, size, df_to_image_array_xd, preds2catids, list_all_categories, map3
 
-# Force to run on CPU
-import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 start = dt.datetime.now()
 
