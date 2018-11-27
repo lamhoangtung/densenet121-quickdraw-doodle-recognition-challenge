@@ -78,7 +78,7 @@ def top_3_accuracy(y_true, y_pred):
 batchsize = 330
 size = 64
 STEPS = 10000
-EPOCHS = 27
+EPOCHS = 9
 # EPOCHS = trunc(30060000/(batchsize*STEPS))
 # STEPS = trunc((34000000/EPOCHS)/batchsize)
 
@@ -89,12 +89,12 @@ x = GlobalAveragePooling2D()(x)
 x = Dense(1024, activation='relu')(x)
 predictions = Dense(NCATS, activation='softmax')(x)
 model = Model(inputs=base_model.input, outputs=predictions)
-model.compile(optimizer=Adam(lr=1e-4, decay=1e-9), loss='categorical_crossentropy', metrics=[
+model.compile(optimizer=Adam(lr=1e-5, decay=1e-9), loss='categorical_crossentropy', metrics=[
               categorical_crossentropy, categorical_accuracy, top_3_accuracy])
 
 
 # Load previous model
-model = load_model('./model/weights-009-0.925.hdf5', custom_objects={'top_3_accuracy': top_3_accuracy})
+model = load_model('./model/2/weights-027-0.939.hdf5', custom_objects={'top_3_accuracy': top_3_accuracy})
 
 
 print(model.summary())
