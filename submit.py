@@ -21,8 +21,11 @@ model_path = './model/3/weights-001-0.942.hdf5'
 print('Loading model at', model_path)
 
 # Load previous model
-model = load_model(model_path, custom_objects={
+trained_model = load_model(model_path, custom_objects={
                    'top_3_accuracy': top_3_accuracy})
+
+# TTA
+model = TTA_ModelWrapper(trained_model)
 
 print('Loaded model. Predicting')
 test = pd.read_csv(os.path.join(INPUT_DIR, 'test_simplified.csv'))
