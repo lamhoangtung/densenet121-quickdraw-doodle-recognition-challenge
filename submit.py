@@ -11,12 +11,12 @@ import time
 import datetime as dt
 import ast
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 
 start = dt.datetime.now()
 
-model_path = './model/weights-027-0.939.hdf5'
+model_path = './model/3/weights-001-0.942.hdf5'
 
 print('Loading model at', model_path)
 

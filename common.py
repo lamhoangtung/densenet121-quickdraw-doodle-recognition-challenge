@@ -19,8 +19,8 @@ from keras.models import Model, load_model
 # In[10]:
 
 
-DP_DIR = './kaggle/shuffle-csvs/'
-INPUT_DIR = './kaggle/'
+DP_DIR = '/mnt/raid1/kaggle/shuffle-csvs/'
+INPUT_DIR = '/mnt/raid1/kaggle/'
 
 BASE_SIZE = 256
 NCSVS = 100
@@ -31,7 +31,7 @@ size = 64
 STEPS = 10000
 EPOCHS = 27
 
-LOAD_SIZE = batchsize * 100
+LOAD_SIZE = batchsize * 400
 
 # EPOCHS = trunc(30060000/(batchsize*STEPS))
 # STEPS = trunc((34000000/EPOCHS)/batchsize)
@@ -108,6 +108,23 @@ def f2cat(filename: str) -> str:
 
 
 # In[ ]:
+
+def apk(actual, predicted, k=3):
+    """
+    Source: https://github.com/benhamner/Metrics/blob/master/Python/ml_metrics/average_precision.py
+    """
+    if len(predicted) > k:
+        predicted = predicted[:k]
+    score = 0.0
+    num_hits = 0.0
+    for i, p in enumerate(predicted):
+        if p in actual and p not in predicted[:i]:
+            num_hits += 1.0
+            score += num_hits / (i + 1.0)
+    if not actual:
+        return 0.0
+    return score / min(len(actual), k)
+
 
 
 

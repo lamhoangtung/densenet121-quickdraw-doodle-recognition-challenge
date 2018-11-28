@@ -94,7 +94,7 @@ model.compile(optimizer=Adam(lr=1e-5, decay=1e-9), loss='categorical_crossentrop
 
 
 # Load previous model
-model = load_model('./model/3/weights-027-0.939.hdf5', custom_objects={'top_3_accuracy': top_3_accuracy})
+model = load_model('./model/3/weights-001-0.942.hdf5', custom_objects={'top_3_accuracy': top_3_accuracy})
 
 
 print(model.summary())
