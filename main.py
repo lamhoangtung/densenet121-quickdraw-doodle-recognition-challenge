@@ -24,11 +24,11 @@ from keras.callbacks import TensorBoard, ModelCheckpoint
 start = dt.datetime.now()
 
 
-DP_DIR = '/mnt/raid1/kaggle/shuffle-csvs/'
+DP_DIR = '/mnt/raid1/kaggle/shuffle-csvs-bigger/'
 INPUT_DIR = '/mnt/raid1/kaggle/'
 
 BASE_SIZE = 256
-NCSVS = 100
+NCSVS = 200
 NCATS = 340
 np.random.seed(seed=2018)
 tf.set_random_seed(seed=2018)
@@ -162,7 +162,7 @@ plt.tight_layout()
 fig.savefig('gs.png', dpi=300)
 
 tensorboard = TensorBoard(log_dir="logs/{}".format(time.time()), batch_size=batchsize, write_images=True, update_freq=(STEPS/10)*batchsize)
-weightpath = "./model/weights-{epoch:03d}-{top_3_accuracy:.3f}.hdf5"
+weightpath = "/mnt/raid1/kaggle/model/weights-{epoch:03d}-{top_3_accuracy:.3f}.hdf5"
 checkpoint = ModelCheckpoint(weightpath, monitor='val_loss', verbose=0,save_best_only=False, save_weights_only=False, mode='auto', period=1)
 
 
