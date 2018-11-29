@@ -12,7 +12,7 @@ from tensorflow import keras
 
 import pandas as pd
 import seaborn as sns
-from keras.applications.densenet import DenseNet121, preprocess_input
+from keras.applications.densenet import DenseNet169, preprocess_input
 from keras.callbacks import ReduceLROnPlateau
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras.metrics import (categorical_accuracy, categorical_crossentropy,
@@ -82,19 +82,19 @@ EPOCHS = 9
 # EPOCHS = trunc(30060000/(batchsize*STEPS))
 # STEPS = trunc((34000000/EPOCHS)/batchsize)
 
-base_model = DenseNet121(include_top=False, weights='imagenet',
+base_model = DenseNet169(include_top=False, weights='imagenet',
                          input_shape=(size, size, 3), classes=NCATS)
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
 x = Dense(1024, activation='relu')(x)
 predictions = Dense(NCATS, activation='softmax')(x)
 model = Model(inputs=base_model.input, outputs=predictions)
-model.compile(optimizer=Adam(lr=1e-5, decay=1e-9), loss='categorical_crossentropy', metrics=[
+model.compile(optimizer=Adam(lr=1e-4, decay=1e-9), loss='categorical_crossentropy', metrics=[
               categorical_crossentropy, categorical_accuracy, top_3_accuracy])
 
 
 # Load previous model
-model = load_model('./model/3/weights-001-0.942.hdf5', custom_objects={'top_3_accuracy': top_3_accuracy})
+# model = load_model('./model/3/weights-001-0.942.hdf5', custom_objects={'top_3_accuracy': top_3_accuracy})
 
 
 print(model.summary())
