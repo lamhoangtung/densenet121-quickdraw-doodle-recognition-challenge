@@ -143,16 +143,7 @@ class TTA_ModelWrapper():
             X (numpy array of dim 4): The data to get predictions for.
         """
 
-        pred = []
-        for x_i in X:
-            p0 = self.model.predict(x_test, batch_size=128, verbose=1)
-            p1 = self.model.predict(self._expand(
-                np.flipud(x_i[:, :, 0])), batch_size=128, verbose=1)
-            p = (p0 + self._expand(np.flipud(p1[0][:, :, 0]))) / 2
-            pred.append(p)
-        return np.array(pred)
-
-    def _expand(self, x):
-        return np.expand_dims(np.expand_dims(x, axis=0), axis=3)
-
-
+        p0 = self.model.predict(X, batch_size=128, verbose=1)
+        p1 = self.model.predict(np.flipud(X), batch_size=128, verbose=1)
+        p = (p0 + p1) / 2
+        return np.array(p)
