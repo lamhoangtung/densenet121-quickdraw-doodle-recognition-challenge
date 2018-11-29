@@ -11,9 +11,9 @@ Sounds fun, right? Here's the challenge: since the training data comes from the 
 Your task is to build a better classifier for the existing Quick, Draw! dataset. By advancing models on this dataset, Kagglers can improve pattern recognition solutions more broadly. This will have an immediate impact on handwriting recognition and its robust applications in areas including OCR (Optical Character Recognition), ASR (Automatic Speech Recognition) & NLP (Natural Language Processing).
 
 ## Main architecture
-Inception V3:
-* Input shape: 128 x 128
-* Batch Size: 680
+Densenet 121:
+* Input shape: 64 x 64
+* Batch Size: 330
 
 
 
