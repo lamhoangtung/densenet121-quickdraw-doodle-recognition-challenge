@@ -27,7 +27,7 @@ class Simplified():
 
 
 start = dt.datetime.now()
-s = Simplified('/mnt/raid1/kaggle')
+s = Simplified('./input/')
 NCSVS = 100
 categories = s.list_all_categories()
 print(len(categories))
@@ -45,7 +45,7 @@ for y, cat in tqdm(enumerate(categories)):
         else:
             chunk.to_csv(filename, mode='a', header=False, index=False)
 
-output_path = '/mnt/raid1/kaggle/shuffle-csvs/'
+output_path = './input/shuffle-csvs/'
 for k in tqdm(range(NCSVS)):
     filename = 'train_k{}.csv'.format(k)
     if os.path.exists(filename):
