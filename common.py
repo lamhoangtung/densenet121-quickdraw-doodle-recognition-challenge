@@ -10,8 +10,8 @@ from keras.metrics import (categorical_accuracy, top_k_categorical_accuracy)
 from keras.models import Model, load_model
 
 
-DP_DIR = '../input/shuffle-csvs/'
-INPUT_DIR = '../input/quickdraw-doodle-recognition/'
+DP_DIR = './input/shuffle-csvs/'
+INPUT_DIR = './input/quickdraw-doodle-recognition/'
 
 BASE_SIZE = 256
 NCSVS = 200
