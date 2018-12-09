@@ -1,18 +1,20 @@
-from common import *
-import seaborn as sns
-import pandas as pd
+import ast
+import datetime as dt
+import os
+import time
+
+import cv2
+import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+import seaborn as sns
+import tensorflow as tf
 from keras.models import Model, load_model
 from tensorflow import keras
-import tensorflow as tf
-import matplotlib.pyplot as plt
-import cv2
-import time
-import datetime as dt
-import ast
-import os
-# os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
+from common import *
+
+# os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 start = dt.datetime.now()
 
@@ -22,10 +24,10 @@ print('Loading model at', model_path)
 
 # Load previous model
 trained_model = load_model(model_path, custom_objects={
-                   'top_3_accuracy': top_3_accuracy})
+    'top_3_accuracy': top_3_accuracy})
 
-# TTA
-model = TTA_ModelWrapper(trained_model)
+# # TTA hflip
+# model = TTA_ModelWrapper(trained_model)
 
 print('Loaded model. Predicting')
 test = pd.read_csv(os.path.join(INPUT_DIR, 'test_simplified.csv'))
