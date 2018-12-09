@@ -43,6 +43,10 @@ Then you can run `python3 main.py`, the program will start to complie the model,
 
 ![sample data](./gs.png)
 
+You can use `submit.py` to create submission file from any saved weight.
+
+By the way, I also have a Kaggle kernel for this exact code which you can use to run if you don't have GPU. You can check it out [here](https://www.kaggle.com/lamhoangtung/densenet-121-lb-0-925)
+
 ## Result
 
 I'm able to achive LB **0.925** with a ***single DenseNet 121 model***, ***no TTA, no ensemble***. 100k/class for training, 340k for validation. ***After 45 epoch and 65 hours on a single GTX 1060 6GB.***
