@@ -2,7 +2,9 @@
 
 ### How accurately can you identify a doodle?
 
-![altext](https://storage.googleapis.com/kaggle-media/competitions/quickdraw/what-does-a-bee-look-like-1.png)
+<p align="center">
+  <img https://storage.googleapis.com/kaggle-media/competitions/quickdraw/what-does-a-bee-look-like-1.png/>
+</p>
 
 "Quick, Draw!" was released as an experimental game to educate the public in a playful way about how AI works. The game prompts users to draw an image depicting a certain category, such as ”banana,” “table,” etc. The game generated more than 1B drawings, of which a subset was publicly released as the basis for this competition’s training set. That subset contains 50M drawings encompassing 340 label categories.
 
@@ -10,7 +12,7 @@ Sounds fun, right? Here's the challenge: since the training data comes from the 
 
 Your task is to build a better classifier for the existing Quick, Draw! dataset. By advancing models on this dataset, Kagglers can improve pattern recognition solutions more broadly. This will have an immediate impact on handwriting recognition and its robust applications in areas including OCR (Optical Character Recognition), ASR (Automatic Speech Recognition) & NLP (Natural Language Processing).
 
-This code is my solution for this challenge, it is a fork of 🐘 Greyscale MobileNet [LB=0.892] from @beluga. Huge thanks for his great kernel
+This code is my solution for this challenge, it is a fork of [🐘 Greyscale MobileNet [LB=0.892]](https://www.kaggle.com/gaborfodor/greyscale-mobilenet-lb-0-892) from @beluga. Huge thanks for his great kernel
 
 ## Main architecture
 ### DenseNet 121
@@ -39,7 +41,9 @@ Other configuration will reasonably work
 
 After install all the dependencies, you need to go to https://www.kaggle.com/c/quickdraw-doodle-recognition/data to download all the data, extract all the zip file and put all of them into a folder `./input/`
 
-Then you can run `python3 main.py`, the program will start to complie the model, draw image from the dataset and start traning the our model
+Then run `python3 shuffle_csv.py` to split and shuffle the data, this may take a while since the amount of data is pretty big
+
+After that you can run `python3 main.py`, the program will start to compile the model, draw image from the dataset and start traning the our model
 
 ![sample data](./gs.png)
 
@@ -57,7 +61,7 @@ Which is pretty good with such limited hardware
 ## Suggession for improvement
 
 You can try these to improve the LB score:
-- Training with more data, you can use @beluga kernel to split and shuffle the data: https://www.kaggle.com/gaborfodor/shuffle-csvs
+- Training with more data, you can use [shuffle_csv.py](shuffle_csv.py) to split and shuffle the data
 - Bigger image size and bigger batch size (batch size should be as big as possible)
 - Try DenseNet 169
 - TTA (hflip) and ensemble
