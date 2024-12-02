@@ -17,7 +17,7 @@ BASE_SIZE = 256
 NCSVS = 200
 NCATS = 340
 np.random.seed(seed=2018)
-tf.set_random_seed(seed=2018)
+tf.random.set_seed(seed=2018)
 
 
 def f2cat(filename: str) -> str:
@@ -77,7 +77,7 @@ def draw_cv2(raw_strokes, size=256, lw=6, time_color=True):
 
 def image_generator_xd(size, batchsize, ks, lw=6, time_color=True):
     while True:
-        for k in np.random.permutation(ks):
+        for k in np.random.Generator.permutation(ks):
             filename = os.path.join(DP_DIR, 'train_k{}.csv.gz'.format(k))
             for df in pd.read_csv(filename, chunksize=batchsize):
                 df['drawing'] = df['drawing'].apply(ast.literal_eval)
