@@ -50,7 +50,7 @@ x = GlobalAveragePooling2D()(x)
 x = Dense(1024, activation='relu')(x)
 predictions = Dense(NCATS, activation='softmax')(x)
 model = Model(inputs=base_model.input, outputs=predictions)
-model.compile(optimizer=Adam(lr=1e-4, decay=1e-9), loss='categorical_crossentropy', metrics=[
+model.compile(optimizer=Adam(learning_rate=1e-4, decay=1e-9), loss='categorical_crossentropy', metrics=[
               categorical_crossentropy, categorical_accuracy, top_3_accuracy])
 
 # Load previous checkpoint

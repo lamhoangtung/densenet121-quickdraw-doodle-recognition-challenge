@@ -17,7 +17,7 @@ BASE_SIZE = 256
 NCSVS = 200
 NCATS = 340
 np.random.seed(seed=2018)
-tf.set_random_seed(seed=2018)
+tf.random.set_seed(seed=2018)
 
 
 def f2cat(filename: str) -> str:
